@@ -69,3 +69,5 @@ python train.py
 [PyTorch-Encoding](https://github.com/zhanghang1989/PyTorch-Encoding)
 [PyTorch-segmentation-toolbox](https://github.com/speedinghzl/pytorch-segmentation-toolbox)
 [Depth2HHA-python](https://github.com/charlesCXK/Depth2HHA-python)
+
+if you have any questions, feel free to contact with me: linzhuochen at foxmail.com or push an issue
