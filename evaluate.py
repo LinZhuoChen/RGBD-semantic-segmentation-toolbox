@@ -11,8 +11,8 @@ from torch.autograd import Variable
 import torchvision.models as models
 import torch.nn.functional as F
 from torch.utils import data
-from networks.gcnet import Res_Deeplab
-from dataset.datasets import NYUDataset_val_full, NYUDataset_val_crop, SUNDataset_val_full
+from networks.baseline import Res_Deeplab
+from dataset.datasets import NYUDataset_val_full, NYUDataset_val_crop
 from collections import OrderedDict
 import os
 import scipy.ndimage as nd
@@ -23,14 +23,14 @@ from PIL import Image as PILImage
 import torch.nn as nn
 IMG_MEAN = np.array((104.00698793,116.66876762,122.67891434), dtype=np.float32)
 
-DATA_DIRECTORY = 'cityscapes'
+DATA_DIRECTORY = 'NYUD'
 DATA_LIST_PATH = './dataset/list/nyud/test_nyud_2.txt'
 # DATA_LIST_PATH = './dataset/list/sunrgbd/test_sunrgbd.txt'
 IGNORE_LABEL = 255
 NUM_CLASSES = 40
 # NUM_CLASSES = 37
 INPUT_SIZE = '360,480'
-RESTORE_FROM = './lab/NYUD/49.6.pth'
+RESTORE_FROM = './model.pth'
 from tqdm import tqdm
 
 def get_arguments():
@@ -230,7 +230,7 @@ def main():
     else:
         input_size = (h, w)
 
-    model = Res_Deeplab(num_classes=args.num_classes, deformable=True)
+    model = Res_Deeplab(num_classes=args.num_classes)
     
     saved_state_dict = torch.load(args.restore_from)
     model.load_state_dict(saved_state_dict)
@@ -247,8 +247,10 @@ def main():
     confusion_matrix = np.zeros((args.num_classes,args.num_classes))
     palette = get_palette(256)
 
-    if not os.path.exists('outputs'):
-        os.makedirs('outputs')
+    if not os.path.exists('output'):
+        os.makedirs('output')
+    if not os.path.exists('output_depth'):
+        os.makedirs('output_depth')
     index = 0
     for batch in tqdm(testloader):
 
