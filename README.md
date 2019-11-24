@@ -7,9 +7,14 @@ The baseline model is dilated ResNet101 without using depth information. Easy to
 **Highlights**
 
 - Synchronous BN
+
 - Fewness of Training Time
+
 - Better Reproduced Performance
+
 - Processed NYUD dataset (image, label, hha, XYZ coordinates) 
+
+[TOC]
 
  ### 1. Requirements
 
@@ -52,7 +57,7 @@ python train.py
 
 ### 3. Results
 
-![](figure\result.png)
+![](figure/result.png)
 
 | Model    | Acc. | mAcc. | mIoU |
 | -------- | ---- | ----- | ---- |
