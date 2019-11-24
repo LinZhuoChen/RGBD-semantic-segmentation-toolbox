@@ -52,7 +52,7 @@ python train.py
 
 ### 3. Results
 
-![](D:\research\code\RGB-D segmentation toolbox\figure\result.png)
+![](.\figure\result.png)
 
 | Model    | Acc. | mAcc. | mIoU |
 | -------- | ---- | ----- | ---- |
