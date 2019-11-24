@@ -52,7 +52,7 @@ python train.py
 
 ### 3. Results
 
-![](.\figure\result.png)
+![](\figure\result.png)
 
 | Model    | Acc. | mAcc. | mIoU |
 | -------- | ---- | ----- | ---- |
