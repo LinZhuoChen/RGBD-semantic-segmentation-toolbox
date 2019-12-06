@@ -146,6 +146,8 @@ def main():
                     preds_val = torch.cat([preds_val[i][0] for i in range(len(preds_val))], 0)
                     preds_val = F.upsample(input=preds_val, size=(480, 640), mode='bilinear', align_corners=True)
 
+                    preds_val = np.asarray(np.argmax(preds_val.cpu().numpy(), axis=1), dtype=np.uint8)
+
                     labels_val = np.asarray(labels_val.cpu().numpy(), dtype=np.int)
                     ignore_index = labels_val != 255
 
