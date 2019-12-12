@@ -75,7 +75,7 @@ class NYUDataset_crop(data.Dataset):
             RandomHorizontalFlip(),
             RandomGaussianBlur(),
             RandomScaleCrop(base_size=480, crop_size=[360, 480]),
-            Normalize(norm=False),
+            Normalize_PIL2numpy_depth2xyz(norm=False),
         ])
         return composed_transforms(sample)
 
@@ -101,7 +101,6 @@ class NYUDataset_crop_fast(data.Dataset):
 
         self.paths_dict = make_dataset_fromlst(self.list_path)
         self.len = len(self.paths_dict['images'])
-        self.label_weight = torch.Tensor(label_weight)
         self.datafile = 'nyuv2_dataset_crop.py'
 
     def __getitem__(self, index):
@@ -131,7 +130,7 @@ class NYUDataset_crop_fast(data.Dataset):
             RandomHorizontalFlip(),
             RandomGaussianBlur(),
             RandomScaleCrop(base_size=640, crop_size=[480, 640]),
-            Normalize(norm=self.norm),
+            Normalize_PIL2numpy_depth2xyz(norm=self.norm),
         ])
         return composed_transforms(sample)
 
@@ -183,7 +182,7 @@ class NYUDataset_val_full(data.Dataset):
 
     def transform_val(self, sample):
         composed_transforms = transforms.Compose([
-            Normalize(norm=self.norm)])
+            Normalize_PIL2numpy_depth2xyz(norm=self.norm)])
         return composed_transforms(sample)
 
     def totensor(self, sample):
@@ -234,7 +233,7 @@ class NYUDataset_val_crop(data.Dataset):
     def transform_val(self, sample):
         composed_transforms = transforms.Compose([
             FixedResize_image(size=[480, 360]),
-            Normalize(norm=self.norm)])
+            Normalize_PIL2numpy_depth2xyz(norm=self.norm)])
         return composed_transforms(sample)
 
     def totensor(self, sample):

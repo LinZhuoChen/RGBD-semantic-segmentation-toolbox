@@ -14,7 +14,7 @@ from torch.utils import data
 from networks.baseline import Res_Deeplab
 from dataset.datasets import NYUDataset_val_full, NYUDataset_val_crop
 from collections import OrderedDict
-import os 
+import os
 import scipy.ndimage as nd
 from math import ceil
 from PIL import Image as PILImage

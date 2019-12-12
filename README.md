@@ -55,6 +55,18 @@ To change this (_e.g._ if you are using a Kepler GPU), please edit the `CUDA_GEN
 python train.py
 ```
 
+The pretrained model is avaliable: [model.pth](https://drive.google.com/file/d/1naKS_3bQQfYt-WThx-Kahxva433zVPJM/view?usp=sharing).
+
+**Demo**
+
+Put the pretrained model into `dataset `folder, then use:
+
+```bash
+jupyter lab
+```
+
+to run the `demo.ipynb`.
+
 ### 3. Results
 
 ![](figure/result.png)
