@@ -238,10 +238,10 @@ def main():
     model.eval()
     model.cuda()
 
-    testloader = data.DataLoader(NYUDataset_val_crop(args.data_list, args.random_scale, args.random_mirror, args.random_crop,
-                    1), batch_size=1, shuffle=False, pin_memory=True)
-    # testloader = data.DataLoader(NYUDataset_val_full(args.data_list, args.random_scale, args.random_mirror, args.random_crop,
+    # testloader = data.DataLoader(NYUDataset_val_crop(args.data_list, args.random_scale, args.random_mirror, args.random_crop,
     #                 1), batch_size=1, shuffle=False, pin_memory=True)
+    testloader = data.DataLoader(NYUDataset_val_full(args.data_list, args.random_scale, args.random_mirror, args.random_crop,
+                    1), batch_size=1, shuffle=False, pin_memory=True)
 
     data_list = []
     confusion_matrix = np.zeros((args.num_classes,args.num_classes))

@@ -126,8 +126,19 @@ class ResNet(nn.Module):
         x = self.relu1(self.bn1(self.conv1(x)))
         x = self.relu2(self.bn2(self.conv2(x)))
         x = self.relu3(self.bn3(self.conv3(x)))
+        x = self.maxpool(x)
+        #
+        # for name, module in self.layer1._modules.items():
+        #     x = module(x, HHA, depth)
+        # for name, module in self.layer2._modules.items():
+        #     x = module(x, HHA, depth)
+        # for name, module in self.layer3._modules.items():
+        #     x = module(x, HHA, depth)
+        # x3 = self.dsn3(x)
+        # for name, module in self.layer4._modules.items():
+        #     x = module(x, HHA, depth)
+        # x4 = self.dsn4(x)
 
-        x = self.maxpool(x) 
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
